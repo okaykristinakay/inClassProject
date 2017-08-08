@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from records import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+#the first view is regex. then it will create a view. the dollar sign means that it is empty. if there is nothing there then it will return all the information on the homepage
+    url(r'^$', views.PostListView.as_view(), name='list_posts'),
+    url(r'^(?P<pk>\d+)/$', views.PostDetailView.as_view(), name='detail_post'),
 ]

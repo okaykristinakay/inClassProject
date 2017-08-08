@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from django.urls import reverse
 from django.db import models
 from django.conf import settings
 
@@ -22,3 +22,7 @@ class Post(models.Model):
 	def __unicode__(self):
 
 		return str(self.title)
+
+	def get_absolute_url(self):
+
+		 return reverse('detail_post', kwargs={'pk':self.pk})
